@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 1: Breakpoints Warna</title>
+    <style>
+      /* Base rule untuk Desktop (> 1024px) */
+      body {
+        background-color: white;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Breakpoint untuk Laptop (≤ 1024px) */
+      @media (max-width: 1024px) {
+        body {
+          background-color: lightgreen;
+        }
+      }
+
+      /* Breakpoint untuk Tablet (≤ 768px) */
+      @media (max-width: 768px) {
+        body {
+          background-color: lightblue;
+        }
+      }
+
+      /* Breakpoint untuk Mobile (≤ 480px) */
+      @media (max-width: 480px) {
+        body {
+          background-color: lightgray;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Uji Coba Warna Latar RWD</h1>
+    <p>
+      Ubah ukuran jendela browser (resize) untuk melihat perubahan warna latar
+      belakang.
+    </p>
+  </body>
+</html>
