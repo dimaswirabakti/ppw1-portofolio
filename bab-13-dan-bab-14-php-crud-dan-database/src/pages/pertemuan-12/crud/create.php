@@ -1,0 +1,121 @@
+<?php
+// Halaman Tambah Mahasiswa
+
+$db     = getDB();
+$errors = [];
+$sukses = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nim = trim($_POST['nim'] ?? '');
+    $nama = trim($_POST['nama'] ?? '');
+    $jurusan = trim($_POST['jurusan'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $alamat = trim($_POST['alamat'] ?? '');
+
+    // Validasi
+    if (empty($nim)) $errors[] = "NIM tidak boleh kosong.";
+    elseif (!preg_match('/^\d{2}\/\d{6}\/[A-Z]{2}\/\d{5}$/', $nim))
+        $errors[] = "Format NIM tidak valid. Contoh: 25/123456/SV/12345";
+
+    if (empty($nama)) $errors[] = "Nama tidak boleh kosong.";
+    if (empty($jurusan)) $errors[] = "Jurusan tidak boleh kosong.";
+
+    if (empty($email)) $errors[] = "Email tidak boleh kosong.";
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
+        $errors[] = "Format email tidak valid.";
+
+    // Cek NIM duplikat
+    if (empty($errors)) {
+        $cek = $db->prepare("SELECT id FROM mahasiswa WHERE nim = :nim");
+        $cek->execute([':nim' => $nim]);
+        if ($cek->fetch()) $errors[] = "NIM sudah terdaftar.";
+    }
+
+    // Simpan jika valid
+    if (empty($errors)) {
+        $stmt = $db->prepare(
+            "INSERT INTO mahasiswa (nim, nama, jurusan, email, alamat)
+             VALUES (:nim, :nama, :jurusan, :email, :alamat)"
+        );
+        $stmt->execute([
+            ':nim'     => $nim,
+            ':nama'    => $nama,
+            ':jurusan' => $jurusan,
+            ':email'   => $email,
+            ':alamat'  => $alamat,
+        ]);
+        $sukses = true;
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tambah Mahasiswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Tambah Mahasiswa</h2>
+            <a href="/?page=pertemuan-12/crud/index" class="btn btn-secondary btn-sm">Kembali</a>
+        </div>
+
+        <?php if ($sukses): ?>
+            <div class="alert alert-success">
+                Data berhasil disimpan!
+                <a href="/?page=pertemuan-12/crud/index" class="alert-link">Lihat daftar</a>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    <?php foreach ($errors as $e): ?>
+                        <li><?= htmlspecialchars($e) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">NIM <span class="text-danger">*</span></label>
+                        <input type="text" name="nim" class="form-control"
+                            value="<?= htmlspecialchars($_POST['nim'] ?? '') ?>" required>
+                        <div class="form-text">Format: 25/123456/SV/12345</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Nama Lengkap <span class="text-danger">*</span></label>
+                        <input type="text" name="nama" class="form-control"
+                            value="<?= htmlspecialchars($_POST['nama'] ?? '') ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Jurusan <span class="text-danger">*</span></label>
+                        <input type="text" name="jurusan" class="form-control"
+                            value="<?= htmlspecialchars($_POST['jurusan'] ?? '') ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                        <input type="email" name="email" class="form-control"
+                            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Alamat</label>
+                        <textarea name="alamat" class="form-control" rows="3"><?= htmlspecialchars($_POST['alamat'] ?? '') ?></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
