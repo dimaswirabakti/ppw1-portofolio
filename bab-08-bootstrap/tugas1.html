@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tugas 1 - Eksplorasi Grid System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f5f7fa;
+      }
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        height: 100%;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+      }
+      .card-text {
+        flex-grow: 1;
+        color: #6c757d;
+        line-height: 1.6;
+      }
+      .card-title {
+        color: #1a56db;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .btn {
+        margin-top: auto;
+      }
+      footer {
+        background: linear-gradient(135deg, #1a56db, #1e293b);
+        color: white;
+        padding: 2rem 0;
+        margin-top: 4rem;
+      }
+      .navbar-brand {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: white !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Portal Edukasi</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Beranda</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Program</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-primary text-white py-5">
+      <div class="container">
+        <h1 class="display-5 fw-bold mb-3">
+          Jelajahi Program Pembelajaran Kami
+        </h1>
+        <p class="lead">
+          Pilih dari berbagai program terbaik untuk mengembangkan skill dan
+          pengetahuan Anda
+        </p>
+      </div>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="container py-5">
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop"
+              class="card-img-top"
+              alt="Web Development"
+            />
+            <div class="card-body">
+              <h5 class="card-title">💻 Web Development</h5>
+              <p class="card-text">
+                Pelajari HTML, CSS, JavaScript, dan framework modern untuk
+                membuat website yang responsif dan interaktif.
+              </p>
+              <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card">
+            <img
+              src="https://descom.digital/wp-content/uploads/2025/06/Mobile-App-Development.webp"
+              class="card-img-top"
+              alt="Mobile App"
+            />
+            <div class="card-body">
+              <h5 class="card-title">📱 Mobile Development</h5>
+              <p class="card-text">
+                Kuasai pembuatan aplikasi mobile native dan cross-platform
+                dengan teknologi terkini untuk iOS dan Android.
+              </p>
+              <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop"
+              class="card-img-top"
+              alt="Data Science"
+            />
+            <div class="card-body">
+              <h5 class="card-title">📊 Data Science</h5>
+              <p class="card-text">
+                Kuasai analisis data, machine learning, dan visualisasi untuk
+                membuat keputusan bisnis yang lebih baik.
+              </p>
+              <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card">
+            <img
+              src="https://masoemuniversity.ac.id/wp-content/uploads/2026/04/UI-vs-UX-Explained-Simply-%F0%9F%92%A1.jpeg"
+              class="card-img-top"
+              alt="UI/UX Design"
+            />
+            <div class="card-body">
+              <h5 class="card-title">🎨 UI/UX Design</h5>
+              <p class="card-text">
+                Desain antarmuka yang user-friendly dengan prinsip desain modern
+                dan tools profesional seperti Figma.
+              </p>
+              <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop"
+              class="card-img-top"
+              alt="Cloud Computing"
+            />
+            <div class="card-body">
+              <h5 class="card-title">☁️ Cloud Computing</h5>
+              <p class="card-text">
+                Pelajari infrastruktur cloud dengan AWS, Google Cloud, dan Azure
+                untuk skalabilitas aplikasi global.
+              </p>
+              <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop"
+              class="card-img-top"
+              alt="DevOps"
+            />
+            <div class="card-body">
+              <h5 class="card-title">🔧 DevOps</h5>
+              <p class="card-text">
+                Otomasi deployment, CI/CD pipeline, Docker, dan Kubernetes untuk
+                efisiensi tim development modern.
+              </p>
+              <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="fw-bold mb-3">Portal Edukasi</h5>
+            <p>
+              Platform pembelajaran online terpercaya dengan ribuan kursus
+              berkualitas dari instruktur berpengalaman.
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <h5 class="fw-bold mb-3">Hubungi Kami</h5>
+            <p class="mb-1">Email: info@edukasi.com</p>
+            <p class="mb-1">Telepon: (021) 1234-5678</p>
+            <p>&copy;2026 Portal Edukasi. Hak Cipta Dilindungi.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

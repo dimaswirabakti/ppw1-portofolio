@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tugas 3 - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .profile-card {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 5px solid #667eea;
+        margin: 0 auto 1rem;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .profile-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+      .profile-info {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+      .stat-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #667eea;
+        margin: 0.5rem 0;
+      }
+      .stat-label {
+        color: #6c757d;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .content-card {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+      .card-title {
+        color: #667eea;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 1rem;
+      }
+      .table {
+        color: #333;
+      }
+      .table thead {
+        background-color: #f8f9fa;
+        border-top: 2px solid #667eea;
+      }
+      .table th {
+        color: #667eea;
+        font-weight: 700;
+        border-bottom: 2px solid #e0e0e0;
+      }
+      .table tbody tr {
+        border-bottom: 1px solid #e0e0e0;
+        transition: background-color 0.2s;
+      }
+      .table tbody tr:hover {
+        background-color: #f8f9fa;
+      }
+      .badge-nilai {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .btn-detail {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        border-radius: 5px;
+        font-weight: 600;
+      }
+      .modal-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+      }
+      .modal-body {
+        padding: 2rem;
+      }
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .detail-label {
+        font-weight: 600;
+        color: #667eea;
+      }
+      .detail-value {
+        color: #333;
+      }
+      .container-lg {
+        max-width: 1200px;
+      }
+    </style>
+  </head>
+  <body class="pt-4 pb-5">
+    <!-- Header Section -->
+    <div class="header">
+      <div class="container-lg">
+        <div class="row g-4">
+          <!-- Profile Card -->
+          <div class="col-lg-4">
+            <div class="profile-card">
+              <img
+                src="img/dwb.jpg"
+                class="profile-avatar"
+                alt="Foto Profil"
+              />
+              <div class="profile-name">Nyoman Dimas Wira Bakti</div>
+              <div class="profile-info">
+                <div class="mb-2">📚 NIM: 25/561741/SV/26643</div>
+                <div class="mb-2">🎓 TRPL Semester 2</div>
+                <div>
+                  <span class="badge bg-success me-1">Aktif</span>
+                  <span class="badge bg-info">Web Developer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistics Cards -->
+          <div class="col-lg-8">
+            <div class="row g-3">
+              <!-- Total SKS -->
+              <div class="col-md-4">
+                <div class="stat-card">
+                  <div class="stat-icon">📚</div>
+                  <div class="stat-value">10</div>
+                  <div class="stat-label">Total SKS</div>
+                </div>
+              </div>
+              <!-- IPK -->
+              <div class="col-md-4">
+                <div class="stat-card">
+                  <div class="stat-icon">📈</div>
+                  <div class="stat-value">3.50</div>
+                  <div class="stat-label">IPK</div>
+                </div>
+              </div>
+              <!-- Mata Kuliah Lulus -->
+              <div class="col-md-4">
+                <div class="stat-card">
+                  <div class="stat-icon">✓</div>
+                  <div class="stat-value">5</div>
+                  <div class="stat-label">Mata Kuliah Lulus</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-lg">
+      <!-- Tabel Nilai -->
+      <div class="content-card">
+        <h2 class="card-title">Daftar Nilai Semester 1</h2>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Mata Kuliah</th>
+                <th>SKS</th>
+                <th>Nilai Huruf</th>
+                <th>Nilai Angka</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1 -->
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Praktikum Pemrograman Komputer</td>
+                <td><span class="badge bg-secondary">2</span></td>
+                <td><span class="badge badge-nilai bg-success">A</span></td>
+                <td><strong>85</strong></td>
+                <td>
+                  <button
+                    class="btn btn-detail btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalDetail1"
+                  >
+                    Detail
+                  </button>
+                </td>
+              </tr>
+              <!-- Row 2 -->
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Matematika Teknik</td>
+                <td><span class="badge bg-secondary">2</span></td>
+                <td><span class="badge badge-nilai bg-success">A</span></td>
+                <td><strong>88</strong></td>
+                <td>
+                  <button
+                    class="btn btn-detail btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalDetail2"
+                  >
+                    Detail
+                  </button>
+                </td>
+              </tr>
+              <!-- Row 3 -->
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Praktikum Desain Elementer</td>
+                <td><span class="badge bg-secondary">2</span></td>
+                <td><span class="badge badge-nilai bg-success">A</span></td>
+                <td><strong>90</strong></td>
+                <td>
+                  <button
+                    class="btn btn-detail btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalDetail3"
+                  >
+                    Detail
+                  </button>
+                </td>
+              </tr>
+              <!-- Row 4 -->
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Keselamatan dan Kesehatan Kerja</td>
+                <td><span class="badge bg-secondary">2</span></td>
+                <td><span class="badge badge-nilai bg-primary">B+</span></td>
+                <td><strong>78</strong></td>
+                <td>
+                  <button
+                    class="btn btn-detail btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalDetail4"
+                  >
+                    Detail
+                  </button>
+                </td>
+              </tr>
+              <!-- Row 5 -->
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Mata Kuliah Pilihan Biologi</td>
+                <td><span class="badge bg-secondary">2</span></td>
+                <td>
+                  <span class="badge badge-nilai bg-warning text-dark">C</span>
+                </td>
+                <td><strong>60</strong></td>
+                <td>
+                  <button
+                    class="btn btn-detail btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalDetail5"
+                  >
+                    Detail
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Catatan Performa -->
+      <div class="content-card">
+        <h2 class="card-title">💡 Catatan Performa</h2>
+        <div class="alert alert-info mb-0" role="alert">
+          <strong>Ringkasan Semester 1:</strong> IPK saat ini
+          <strong>3.50</strong>. Nilai A diraih di 3 mata kuliah, namun masih
+          ada ruang peningkatan di K3 (B+) dan Mata Kuliah Pilihan Biologi (C).
+          Pertahankan dan tingkatkan semangat belajarmu!
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail 1: Praktikum Pemrograman Komputer -->
+    <div
+      class="modal fade"
+      id="modalDetail1"
+      tabindex="-1"
+      aria-labelledby="modalLabel1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel1">📚 Detail Mata Kuliah</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="detail-row">
+              <span class="detail-label">Nama Mata Kuliah</span>
+              <span class="detail-value">Praktikum Pemrograman Komputer</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Kode Mata Kuliah</span>
+              <span class="detail-value">SVPL214106</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">SKS</span>
+              <span class="detail-value">2 SKS</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Semester</span>
+              <span class="detail-value">1</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Dosen Pengampu</span>
+              <span class="detail-value">Firma Syahrian, S.Kom., M.Cs.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Huruf</span>
+              <span class="detail-value"
+                ><span class="badge bg-success">A</span></span
+              >
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Angka</span>
+              <span class="detail-value"><strong>85</strong></span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Deskripsi</span>
+              <span class="detail-value"
+                >Mata kuliah praktikum yang mengajarkan dasar-dasar pemrograman
+                dengan bahasa Python.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail 2: Matematika Teknik -->
+    <div
+      class="modal fade"
+      id="modalDetail2"
+      tabindex="-1"
+      aria-labelledby="modalLabel2"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel2">📚 Detail Mata Kuliah</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="detail-row">
+              <span class="detail-label">Nama Mata Kuliah</span>
+              <span class="detail-value">Matematika Teknik</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Kode Mata Kuliah</span>
+              <span class="detail-value">SVPL214102</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">SKS</span>
+              <span class="detail-value">2 SKS</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Semester</span>
+              <span class="detail-value">1</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Dosen Pengampu</span>
+              <span class="detail-value">Drs. Sri Mulyana, M.Kom.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Huruf</span>
+              <span class="detail-value"
+                ><span class="badge bg-success">A</span></span
+              >
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Angka</span>
+              <span class="detail-value"><strong>88</strong></span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Deskripsi</span>
+              <span class="detail-value"
+                >Mata kuliah teori yang mencakup kalkulus, aljabar linear, dan
+                aplikasinya dalam teknik.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail 3: Praktikum Desain Elementer -->
+    <div
+      class="modal fade"
+      id="modalDetail3"
+      tabindex="-1"
+      aria-labelledby="modalLabel3"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel3">📚 Detail Mata Kuliah</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="detail-row">
+              <span class="detail-label">Nama Mata Kuliah</span>
+              <span class="detail-value">Praktikum Desain Elementer</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Kode Mata Kuliah</span>
+              <span class="detail-value">SVPL214109</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">SKS</span>
+              <span class="detail-value">2 SKS</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Semester</span>
+              <span class="detail-value">1</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Dosen Pengampu</span>
+              <span class="detail-value">Yusron Fuadi, S.Sn., M.Sn.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Huruf</span>
+              <span class="detail-value"
+                ><span class="badge bg-success">A</span></span
+              >
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Angka</span>
+              <span class="detail-value"><strong>90</strong></span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Deskripsi</span>
+              <span class="detail-value"
+                >Mata kuliah praktikum desain grafis dan user interface
+                menggunakan software profesional.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail 4: Keselamatan dan Kesehatan Kerja -->
+    <div
+      class="modal fade"
+      id="modalDetail4"
+      tabindex="-1"
+      aria-labelledby="modalLabel4"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel4">📚 Detail Mata Kuliah</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="detail-row">
+              <span class="detail-label">Nama Mata Kuliah</span>
+              <span class="detail-value">Keselamatan dan Kesehatan Kerja</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Kode Mata Kuliah</span>
+              <span class="detail-value">SVPL214108</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">SKS</span>
+              <span class="detail-value">2 SKS</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Semester</span>
+              <span class="detail-value">1</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Dosen Pengampu</span>
+              <span class="detail-value"
+                >Dian Herawati, S.T., SST., M.P.H.</span
+              >
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Huruf</span>
+              <span class="detail-value"
+                ><span class="badge bg-primary">B+</span></span
+              >
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Angka</span>
+              <span class="detail-value"><strong>78</strong></span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Deskripsi</span>
+              <span class="detail-value"
+                >Mata kuliah yang membahas prinsip-prinsip keselamatan dan
+                kesehatan kerja di lingkungan industri dan teknologi.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail 5: Mata Kuliah Pilihan Biologi -->
+    <div
+      class="modal fade"
+      id="modalDetail5"
+      tabindex="-1"
+      aria-labelledby="modalLabel5"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel5">📚 Detail Mata Kuliah</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="detail-row">
+              <span class="detail-label">Nama Mata Kuliah</span>
+              <span class="detail-value">Mata Kuliah Pilihan Biologi</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Kode Mata Kuliah</span>
+              <span class="detail-value">MK-105</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">SKS</span>
+              <span class="detail-value">2 SKS</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Semester</span>
+              <span class="detail-value">1</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Dosen Pengampu</span>
+              <span class="detail-value">Mang Dimas, S. Si.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Huruf</span>
+              <span class="detail-value"
+                ><span class="badge bg-warning text-dark">C</span></span
+              >
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Nilai Angka</span>
+              <span class="detail-value"><strong>60</strong></span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Deskripsi</span>
+              <span class="detail-value"
+                >Mata kuliah pilihan yang membahas dasar-dasar biologi dan
+                penerapannya dalam konteks teknologi modern.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
