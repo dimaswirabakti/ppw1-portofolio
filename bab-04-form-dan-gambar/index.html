@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Praktikum - Form Lanjutan dan Grafik HTML</title>
+</head>
+<body>
+    <h1>Tugas Praktikum Utama</h1>
+    <h2>Formulir Pendaftaran</h2>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Formulir Pendaftaran</legend>
+            <p>
+                <label for="nama">Nama Lengkap:</label><br>
+                <input type="text" id="nama" name="nama" value="Nyoman Dimas Wira Bakti">
+            </p>
+            <p>
+                <label for="usia">Usia:</label><br>
+                <input type="number" id="usia" name="usia" value="100">
+            </p>
+            <p>
+                <label for="prodi">Program Studi:</label><br>
+                <input type="text" id="prodi" name="prodi" list="daftar_prodi">
+                <datalist id="daftar_prodi">
+                    <option value="Teknologi Rekayasa Perangkat Lunak"></option>
+                    <option value="Teknologi Rekayasa Internet"></option>
+                    <option value="Sistem Informasi Geografis"></option>
+                </datalist>
+            </p>
+            <p>
+                <input type="submit" value="Daftar">
+            </p>
+        </fieldset>
+    </form>
+    <hr>
+    <!-- Bagian SVG -->
+    <h2>Grafik SVG</h2>
+    <svg width="200" height="200" style="border:1px solid #000;">
+        <!-- Persegi -->
+        <rect x="50" y="50" width="100" height="100" fill="blue" />
+        <!-- Lingkaran -->
+        <circle cx="100" cy="100" r="40" fill="red" />
+    </svg>
+    <hr>
+    <!-- Bagian Canvas -->
+    <h2>Grafik Canvas</h2>
+    <canvas id="myCanvas" width="400" height="200" style="border:1px solid #000;"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        // Menggambar garis diagonal
+        ctx.beginPath();
+        ctx.moveTo(0, 0);       // Titik awal
+        ctx.lineTo(400, 200);   // Akhir garis (sudut kanan bawah)
+        ctx.stroke();           // Eksekusi gambar garis
+        // Menulis teks
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Praktikum Pemrograman Web 1", 50, 180);
+    </script>
+</body>
+</html>
