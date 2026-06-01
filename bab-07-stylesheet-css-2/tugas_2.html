@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas 2 - Flexbox Landing Page</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between; /* Logo di kiri, menu di kanan */
+        align-items: center;
+        background-color: #2980b9;
+        color: white;
+        padding: 20px 40px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex; /* Teks di kiri, gambar di kanan */
+        align-items: center;
+        justify-content: space-between;
+        padding: 60px 40px;
+        background-color: #ecf0f1;
+        gap: 40px;
+      }
+      .hero-text {
+        flex: 1;
+      }
+      .hero-image {
+        flex: 1;
+        height: 300px;
+        background-image: url("img/ilustrasi.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        color: rgb(32, 32, 32);
+      }
+
+      /* Card Grid */
+      .cards-section {
+        padding: 60px 40px;
+      }
+      .cards-container {
+        display: flex;
+        flex-wrap: wrap; /* Agar elemen turun ke bawah jika layar tidak muat */
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        flex: 1;
+        min-width: 250px; /* Mencegah kartu terlalu kecil */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      /* Footer */
+      .footer {
+        display: flex;
+        gap: 40px; /* Jarak antar kolom */
+        background-color: #2c3e50;
+        color: white;
+        padding: 40px;
+      }
+      .footer-col {
+        flex: 1;
+      }
+
+      /* BONUS: @media query untuk layar kecil */
+      @media (max-width: 768px) {
+        /* Ubah Flexbox menjadi kolom di layar kecil */
+        .navbar {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo"><strong>MY BRAND</strong></div>
+      <div class="nav-menu">
+        <span>Home</span>
+        <span>About</span>
+        <span>Contact</span>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Selamat Datang di Website Kami</h1>
+        <p>
+          Ini adalah implementasi Flexbox untuk membuat Hero Section yang rapi.
+          Teks berada di sebelah kiri dan ilustrasi di sebelah kanan.
+        </p>
+      </div>
+      <div class="hero-image">[ Area Gambar / Ilustrasi ]</div>
+    </section>
+
+    <section class="cards-section">
+      <h2 style="text-align: center; margin-bottom: 30px">Fitur Kami</h2>
+      <div class="cards-container">
+        <div class="card">
+          <h3>Fitur 1</h3>
+          <p>Deskripsi singkat tentang fitur pertama produk ini.</p>
+        </div>
+        <div class="card">
+          <h3>Fitur 2</h3>
+          <p>Deskripsi singkat tentang fitur kedua produk ini.</p>
+        </div>
+        <div class="card">
+          <h3>Fitur 3</h3>
+          <p>Deskripsi singkat tentang fitur ketiga produk ini.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-col">
+        <h3>Tentang Kami</h3>
+        <p>Perusahaan inovatif yang fokus pada pengembangan perangkat lunak.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Tautan</h3>
+        <p>Home<br />Produk<br />Karir</p>
+      </div>
+      <div class="footer-col">
+        <h3>Kontak</h3>
+        <p>Email: contohemail@brand.com<br />Telp: 123-456-789</p>
+      </div>
+    </footer>
+  </body>
+</html>
