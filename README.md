@@ -37,6 +37,6 @@ Project CRUD:
 
 HTML · CSS · JavaScript · PHP · MySQL · Bootstrap
 
-## Screenshot
+## Preview CRUD PHP MYSQL
 
-![Preview CRUD]()
+![Preview CRUD](./bab-13-dan-bab-14-php-crud-dan-database/docs/preview_crud_php_mysql.png)
