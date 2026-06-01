@@ -14,3 +14,6 @@ desktop.ini
 # Log dan cache
 *.log
 cache/
+
+bab-12-dasar-dasar-php/docs/workflow/
+bab-13-dan-bab-14-php-crud-dan-database/docs/workflow/
