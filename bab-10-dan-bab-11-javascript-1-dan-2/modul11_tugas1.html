@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Perbandingan Bilangan</title>
+  </head>
+  <body>
+    <h2>Hasil Perbandingan:</h2>
+    <h3 id="hasil"></h3>
+
+    <script>
+      // Meminta input dan langsung mengonversi string menjadi angka
+      let bil1 = Number(prompt("Masukkan bilangan ke-1:"));
+      let bil2 = Number(prompt("Masukkan bilangan ke-2:"));
+      let pesan = "";
+
+      // Validasi apakah input benar-benar angka (NaN = Not-a-Number)
+      if (isNaN(bil1) || isNaN(bil2)) {
+        pesan = "Input tidak valid. Harap masukkan angka.";
+      } else if (bil1 > bil2) {
+        pesan = "BILANGAN KE-1 LEBIH BESAR DARI BILANGAN KE-2";
+      } else if (bil1 < bil2) {
+        pesan = "BILANGAN KE-2 LEBIH BESAR DARI BILANGAN KE-1";
+      } else {
+        pesan = "KEDUA BILANGAN SAMA BESAR";
+      }
+
+      document.getElementById("hasil").innerText = pesan;
+    </script>
+  </body>
+</html>

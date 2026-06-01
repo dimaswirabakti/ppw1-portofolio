@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kalkulator Sederhana</title>
+  </head>
+  <body>
+    <script>
+      let angka1 = Number(prompt("Masukkan angka pertama:"));
+      let operator = prompt("Masukkan operator (+, -, *, /):");
+      let angka2 = Number(prompt("Masukkan angka kedua:"));
+      let hasil;
+
+      if (isNaN(angka1) || isNaN(angka2)) {
+        alert("Error: Salah satu input bukan merupakan angka.");
+      } else {
+        switch (operator) {
+          case "+":
+            hasil = angka1 + angka2;
+            break;
+          case "-":
+            hasil = angka1 - angka2;
+            break;
+          case "*":
+            hasil = angka1 * angka2;
+            break;
+          case "/":
+            if (angka2 === 0) {
+              hasil = "Error: Pembagian dengan nol tidak didefinisikan";
+            } else {
+              hasil = angka1 / angka2;
+            }
+            break;
+          default:
+            hasil = "Error: Operator tidak dikenali";
+        }
+        alert(
+          "Hasil: " + angka1 + " " + operator + " " + angka2 + " = " + hasil,
+        );
+      }
+    </script>
+  </body>
+</html>

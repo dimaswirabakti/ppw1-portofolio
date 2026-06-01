@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tugas 2 - Modul 10</title>
+  </head>
+  <body>
+    <h1>Tugas 2: Menampilkan Output</h1>
+    <div id="target-inner"></div>
+
+    <script>
+      // console.log()
+      console.log("Output ini tampil di console browser.");
+
+      // alert(): Output berupa pop-up dialog
+      alert("Ini adalah output dari alert()!");
+
+      // innerHTML: Menyisipkan teks/elemen ke dalam elemen HTML yang sudah ada
+      document.getElementById("target-inner").innerHTML =
+        "<p>Teks ini dimuat menggunakan <strong>innerHTML</strong>.</p>";
+
+      // document.write(): Menulis langsung ke dokumen HTML
+      document.write(
+        "<p>Teks ini ditulis menggunakan <strong>document.write()</strong>.</p>",
+      );
+    </script>
+  </body>
+</html>
