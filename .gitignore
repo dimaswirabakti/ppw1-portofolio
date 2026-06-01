@@ -1,0 +1,16 @@
+# Secret Key
+bab-12-dasar-dasar-php/.env
+bab-13-dan-bab-14-php-crud-dan-database/.env
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Folder IDE / editor
+.vscode/
+.idea/
+
+# Log dan cache
+*.log
+cache/
